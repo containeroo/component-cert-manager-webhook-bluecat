@@ -27,7 +27,7 @@ spec:
             - --secure-port=10250
           env:
             - name: GROUP_NAME
-              value: acme.bluecat.example.org
+              value: bluecat.acme.containeroo.ch
           image: ghcr.io/containeroo/cert-manager-webhook-bluecat:v1.0.0
           imagePullPolicy: IfNotPresent
           livenessProbe:

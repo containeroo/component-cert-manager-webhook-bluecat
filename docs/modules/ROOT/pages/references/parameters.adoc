@@ -54,17 +54,9 @@ Webhook image tag used in chart values.
 
 [horizontal]
 type:: dict
-default:: `{"groupName": "acme.bluecat.example.org", "image": "${cert_manager_webhook_bluecat:images:webhook}", "certManager": {"namespace": "${cert_manager_webhook_bluecat:namespace}"}}`
+default:: `{"image": "${cert_manager_webhook_bluecat:images:webhook}", "certManager": {"namespace": "${cert_manager_webhook_bluecat:namespace}"}}`
 
 Values passed directly to the upstream Helm chart.
-
-== `helm_values.groupName`
-
-[horizontal]
-type:: string
-default:: `acme.bluecat.example.org`
-
-API group name used by the cert-manager DNS01 webhook APIService.
 
 == `helm_values.image`
 
@@ -95,7 +87,6 @@ cert_manager_webhook_bluecat:
     webhook:
       tag: v1.0.0
   helm_values:
-    groupName: acme.bluecat.example.org
     certManager:
       namespace: cert-manager
 ----

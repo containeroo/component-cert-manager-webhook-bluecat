@@ -8,9 +8,9 @@ metadata:
     chart: cert-manager-webhook-bluecat-1.0.0
     heritage: Helm
     release: cert-manager-webhook-bluecat
-  name: v1alpha1.acme.bluecat.example.org
+  name: v1alpha1.bluecat.acme.containeroo.ch
 spec:
-  group: acme.bluecat.example.org
+  group: bluecat.acme.containeroo.ch
   groupPriorityMinimum: 1000
   service:
     name: cert-manager-webhook-bluecat

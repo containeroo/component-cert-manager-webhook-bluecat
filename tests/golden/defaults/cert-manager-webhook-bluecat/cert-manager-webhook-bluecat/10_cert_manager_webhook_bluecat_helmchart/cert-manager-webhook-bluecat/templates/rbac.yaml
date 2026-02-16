@@ -37,7 +37,7 @@ metadata:
   name: cert-manager-webhook-bluecat:domain-solver
 rules:
   - apiGroups:
-      - acme.bluecat.example.org
+      - bluecat.acme.containeroo.ch
     resources:
       - '*'
     verbs:

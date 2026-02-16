@@ -15,7 +15,6 @@ parameters:
         tag: v1.0.0
 
     helm_values:
-      groupName: acme.bluecat.example.org
       image: ${cert_manager_webhook_bluecat:images:webhook}
       certManager:
         namespace: ${cert_manager_webhook_bluecat:namespace}
