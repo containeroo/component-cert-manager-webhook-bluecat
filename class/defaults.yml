@@ -1,9 +1,8 @@
+---
 parameters:
   cert_manager_webhook_bluecat:
-    =_metadata:
-      multi_tenant: true
     name: cert-manager-webhook-bluecat
-    namespace: syn-cert-manager-webhook-bluecat
+    namespace: syn-cert-manager
 
     charts:
       cert_manager_webhook_bluecat:

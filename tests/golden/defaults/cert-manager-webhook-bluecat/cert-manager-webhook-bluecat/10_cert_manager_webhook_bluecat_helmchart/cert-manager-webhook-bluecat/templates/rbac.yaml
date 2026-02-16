@@ -7,7 +7,7 @@ metadata:
     heritage: Helm
     release: cert-manager-webhook-bluecat
   name: cert-manager-webhook-bluecat
-  namespace: syn-cert-manager-webhook-bluecat
+  namespace: syn-cert-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -60,7 +60,7 @@ subjects:
   - apiGroup: ''
     kind: ServiceAccount
     name: cert-manager-webhook-bluecat
-    namespace: syn-cert-manager-webhook-bluecat
+    namespace: syn-cert-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -79,7 +79,7 @@ subjects:
   - apiGroup: ''
     kind: ServiceAccount
     name: cert-manager-webhook-bluecat
-    namespace: syn-cert-manager-webhook-bluecat
+    namespace: syn-cert-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -118,4 +118,4 @@ subjects:
   - apiGroup: ''
     kind: ServiceAccount
     name: cert-manager-webhook-bluecat
-    namespace: syn-cert-manager-webhook-bluecat
+    namespace: syn-cert-manager
