@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cert-manager-webhook-bluecat
+    chart: cert-manager-webhook-bluecat-1.0.0
+    heritage: Helm
+    release: cert-manager-webhook-bluecat
+  name: cert-manager-webhook-bluecat
+  namespace: syn-cert-manager-webhook-bluecat
+spec:
+  replicas: null
+  selector:
+    matchLabels:
+      app: cert-manager-webhook-bluecat
+      release: cert-manager-webhook-bluecat
+  template:
+    metadata:
+      labels:
+        app: cert-manager-webhook-bluecat
+        release: cert-manager-webhook-bluecat
+    spec:
+      containers:
+        - args:
+            - --tls-cert-file=/tls/tls.crt
+            - --tls-private-key-file=/tls/tls.key
+            - --secure-port=10250
+          env:
+            - name: GROUP_NAME
+              value: acme.bluecat.example.org
+          image: ghcr.io/containeroo/cert-manager-webhook-bluecat:v1.0.0
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: https
+              scheme: HTTPS
+          name: cert-manager-webhook-bluecat
+          ports:
+            - containerPort: 10250
+              name: https
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: https
+              scheme: HTTPS
+          resources: {}
+          volumeMounts:
+            - mountPath: /tls
+              name: certs
+              readOnly: true
+      serviceAccountName: cert-manager-webhook-bluecat
+      volumes:
+        - name: certs
+          secret:
+            secretName: cert-manager-webhook-bluecat-webhook-tls

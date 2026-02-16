@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cert-manager-webhook-bluecat
+    chart: cert-manager-webhook-bluecat-1.0.0
+    heritage: Helm
+    release: cert-manager-webhook-bluecat
+  name: cert-manager-webhook-bluecat
+  namespace: syn-cert-manager-webhook-bluecat
+spec:
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
+  selector:
+    app: cert-manager-webhook-bluecat
+    release: cert-manager-webhook-bluecat
+  type: ClusterIP
