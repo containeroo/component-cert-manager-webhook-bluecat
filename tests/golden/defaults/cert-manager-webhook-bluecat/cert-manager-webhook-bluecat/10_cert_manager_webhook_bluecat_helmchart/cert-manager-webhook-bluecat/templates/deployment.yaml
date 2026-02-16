@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: cert-manager-webhook-bluecat
-    chart: cert-manager-webhook-bluecat-1.0.0
+    chart: cert-manager-webhook-bluecat-1.0.1
     heritage: Helm
     release: cert-manager-webhook-bluecat
   name: cert-manager-webhook-bluecat
@@ -28,7 +28,7 @@ spec:
           env:
             - name: GROUP_NAME
               value: bluecat.acme.containeroo.ch
-          image: ghcr.io/containeroo/cert-manager-webhook-bluecat:v1.0.0
+          image: ghcr.io/containeroo/cert-manager-webhook-bluecat:v1.0.1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:

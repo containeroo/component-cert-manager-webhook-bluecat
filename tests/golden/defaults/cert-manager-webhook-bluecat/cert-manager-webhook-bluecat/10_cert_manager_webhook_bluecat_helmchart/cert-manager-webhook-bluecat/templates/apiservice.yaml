@@ -5,7 +5,7 @@ metadata:
     cert-manager.io/inject-ca-from: syn-cert-manager/cert-manager-webhook-bluecat-webhook-tls
   labels:
     app: cert-manager-webhook-bluecat
-    chart: cert-manager-webhook-bluecat-1.0.0
+    chart: cert-manager-webhook-bluecat-1.0.1
     heritage: Helm
     release: cert-manager-webhook-bluecat
   name: v1alpha1.bluecat.acme.containeroo.ch
