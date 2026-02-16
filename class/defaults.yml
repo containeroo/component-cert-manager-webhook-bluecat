@@ -7,7 +7,7 @@ parameters:
     charts:
       cert_manager_webhook_bluecat:
         source: https://charts.containeroo.ch
-        version: 1.0.0
+        version: 1.0.1
 
     images:
       webhook:
