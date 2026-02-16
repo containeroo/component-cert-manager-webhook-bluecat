@@ -1,0 +1,22 @@
+parameters:
+  kapitan:
+    dependencies:
+      - type: helm
+        source: ${cert_manager_webhook_bluecat:charts:cert_manager_webhook_bluecat:source}
+        chart_name: cert-manager-webhook-bluecat
+        version: ${cert_manager_webhook_bluecat:charts:cert_manager_webhook_bluecat:version}
+        output_path: dependencies/cert-manager-webhook-bluecat/helmcharts/cert-manager-webhook-bluecat-${cert_manager_webhook_bluecat:charts:cert_manager_webhook_bluecat:version}
+    compile:
+      - input_paths:
+          - ${_base_directory}/component/app.jsonnet
+        input_type: jsonnet
+        output_path: .
+      - input_paths:
+          - dependencies/cert-manager-webhook-bluecat/helmcharts/cert-manager-webhook-bluecat-${cert_manager_webhook_bluecat:charts:cert_manager_webhook_bluecat:version}
+        input_type: helm
+        output_type: yaml
+        output_path: cert-manager-webhook-bluecat/10_cert_manager_webhook_bluecat_helmchart
+        helm_values: ${cert_manager_webhook_bluecat:helm_values}
+        helm_params:
+          name: ${cert_manager_webhook_bluecat:name}
+          namespace: ${cert_manager_webhook_bluecat:namespace}

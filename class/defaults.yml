@@ -1,0 +1,20 @@
+parameters:
+  cert_manager_webhook_bluecat:
+    =_metadata:
+      multi_tenant: true
+    name: cert-manager-webhook-bluecat
+    namespace: syn-cert-manager-webhook-bluecat
+
+    charts:
+      cert_manager_webhook_bluecat:
+        source: https://charts.containeroo.ch
+        version: 1.0.0
+
+    images:
+      webhook:
+        repository: ghcr.io/containeroo/cert-manager-webhook-bluecat
+        tag: v1.0.0
+
+    helm_values:
+      groupName: acme.bluecat.example.org
+      image: ${cert_manager_webhook_bluecat:images:webhook}

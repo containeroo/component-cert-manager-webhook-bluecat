@@ -1,0 +1,32 @@
+{
+  "extends": ["config:base"],
+  "ignorePaths": [".github/**"],
+  "labels": ["dependency"],
+  "separateMinorPatch": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "cert-manager-webhook-bluecat image tag pinned in class/defaults.yml",
+      "managerFilePatterns": ["/^class\\/defaults\\.yml$/"],
+      "matchStrings": [
+        "cert_manager_webhook_bluecat:\\s*\\n(?:[^\\n]*\\n)*?\\s*images:\\s*\\n(?:[^\\n]*\\n)*?\\s*webhook:\\s*\\n(?:[^\\n]*\\n)*?\\s*tag:\\s*(?<currentValue>v?\\d+\\.\\d+\\.\\d+)\\s*\\n"
+      ],
+      "depNameTemplate": "ghcr.io/containeroo/cert-manager-webhook-bluecat",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "description": "cert-manager-webhook-bluecat Helm chart version pinned in class/defaults.yml",
+      "managerFilePatterns": ["/^class\\/defaults\\.yml$/"],
+      "matchStrings": [
+        "cert_manager_webhook_bluecat:\\s*\\n(?:[^\\n]*\\n)*?\\s*charts:\\s*\\n(?:[^\\n]*\\n)*?\\s*cert_manager_webhook_bluecat:\\s*\\n(?:[^\\n]*\\n)*?\\s*version:\\s*(?<currentValue>\\d+\\.\\d+\\.\\d+)\\s*\\n"
+      ],
+      "depNameTemplate": "cert-manager-webhook-bluecat",
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://charts.containeroo.ch",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "suppressNotifications": ["artifactErrors"]
+}

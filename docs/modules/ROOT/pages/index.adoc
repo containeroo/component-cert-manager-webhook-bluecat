@@ -1,0 +1,5 @@
+= cert-manager-webhook-bluecat
+
+cert-manager-webhook-bluecat is a Commodore component to manage cert-manager-webhook-bluecat.
+
+See the xref:references/parameters.adoc[parameters] reference for further details.

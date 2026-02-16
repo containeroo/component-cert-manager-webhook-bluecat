@@ -1,0 +1,92 @@
+= Parameters
+
+The parent key for all of the following parameters is `cert_manager_webhook_bluecat`.
+
+== `name`
+
+[horizontal]
+type:: string
+default:: `cert-manager-webhook-bluecat`
+
+Release name used for the Helm deployment.
+
+== `namespace`
+
+[horizontal]
+type:: string
+default:: `syn-cert-manager-webhook-bluecat`
+
+The namespace in which to deploy this component.
+
+== `charts.cert_manager_webhook_bluecat.source`
+
+[horizontal]
+type:: string
+default:: `https://charts.containeroo.ch`
+
+Upstream Helm repository URL for `cert-manager-webhook-bluecat`.
+
+== `charts.cert_manager_webhook_bluecat.version`
+
+[horizontal]
+type:: string
+default:: `1.0.0`
+
+Upstream Helm chart version to deploy.
+
+== `images.webhook.repository`
+
+[horizontal]
+type:: string
+default:: `ghcr.io/containeroo/cert-manager-webhook-bluecat`
+
+Webhook image repository used in chart values.
+
+== `images.webhook.tag`
+
+[horizontal]
+type:: string
+default:: `v1.0.0`
+
+Webhook image tag used in chart values.
+
+== `helm_values`
+
+[horizontal]
+type:: dict
+default:: `{"groupName": "acme.bluecat.example.org", "image": "${cert_manager_webhook_bluecat:images:webhook}"}`
+
+Values passed directly to the upstream Helm chart.
+
+== `helm_values.groupName`
+
+[horizontal]
+type:: string
+default:: `acme.bluecat.example.org`
+
+API group name used by the cert-manager DNS01 webhook APIService.
+
+== `helm_values.image`
+
+[horizontal]
+type:: dict
+default:: `${cert_manager_webhook_bluecat:images:webhook}`
+
+Image configuration map passed to the Helm chart.
+
+
+== Example
+
+[source,yaml]
+----
+cert_manager_webhook_bluecat:
+  namespace: cert-manager
+  charts:
+    cert_manager_webhook_bluecat:
+      version: 1.0.0
+  images:
+    webhook:
+      tag: v1.0.0
+  helm_values:
+    groupName: acme.bluecat.example.org
+----
