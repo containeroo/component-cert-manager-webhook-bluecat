@@ -5,7 +5,7 @@ parameters:
     namespace: syn-cert-manager
 
     charts:
-      cert_manager_webhook_bluecat:
+      cert-manager-webhook-bluecat:
         source: https://charts.containeroo.ch
         version: 1.0.1
 
